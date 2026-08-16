@@ -8,81 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
-// ── AI CHATBOT ──
-var chatHistory = [];
-
-var MURTAZ_INFO = {
-  pricing: "AI Sales Agent: $2K-5K | Full SaaS Platform: $8K-20K | AI Automation: $1.5K-4K | AI Integration: $1K-3K | Monthly Retainer: $1.5K-3K/mo | AI Audit: $299. Minimum: $1K. Fixed price only. 50% upfront.",
-  stack: "Next.js 16, TypeScript, Supabase, Firebase, OpenAI, Anthropic, OpenRouter, Three.js, Vercel, Tailwind CSS, Python, PostgreSQL",
-  projects: "Salevrix AI — Apollo.io alternative with 10 AI agents, 15 automations. Built solo in 6 months. Live at salevrix-ai-black.vercel.app. Also built AI Outbound System for US client ($4K, 3 weeks).",
-  speed: "Simple AI integrations: 1-2 weeks. Full SaaS platforms: 4-8 weeks. Most projects: 2-4 weeks. Fixed price, no surprises.",
-  contact: "Email: murtaztahir2@gmail.com | LinkedIn: linkedin.com/in/murtaztahir | Response: 2-4 hours",
-  about: "Murtaz Tahir — Full-Stack AI Developer & SaaS Builder from Pakistan. Works with US & UK clients remotely. 1-2 years experience. Built Salevrix AI solo in 6 months.",
-  payment: "50% upfront, 50% on delivery. For +$10K projects: 40% start, 30% mid, 30% delivery. Bank transfer or Wise only.",
-  process: "1. Free discovery call → 2. Proposal in 24-48hrs → 3. Build with daily Vercel preview updates → 4. Review & polish → 5. Launch + 2 weeks support included."
-};
-
-function getSmartReply(msg) {
-  msg = msg.toLowerCase();
-  if (msg.includes('price') || msg.includes('cost') || msg.includes('how much') || msg.includes('pricing') || msg.includes('charge') || msg.includes('rate') || msg.includes('fee')) {
-    return "Here's my pricing: " + MURTAZ_INFO.pricing;
-  }
-  if (msg.includes('fast') || msg.includes('long') || msg.includes('timeline') || msg.includes('week') || msg.includes('deliver') || msg.includes('time')) {
-    return "Delivery timelines: " + MURTAZ_INFO.speed;
-  }
-  if (msg.includes('stack') || msg.includes('tech') || msg.includes('tool') || msg.includes('language') || msg.includes('framework') || msg.includes('next') || msg.includes('react')) {
-    return "My tech stack: " + MURTAZ_INFO.stack;
-  }
-  if (msg.includes('project') || msg.includes('work') || msg.includes('built') || msg.includes('salevrix') || msg.includes('portfolio') || msg.includes('example')) {
-    return "My projects: " + MURTAZ_INFO.projects;
-  }
-  if (msg.includes('contact') || msg.includes('email') || msg.includes('reach') || msg.includes('hire') || msg.includes('start') || msg.includes('begin')) {
-    return "Let's connect! " + MURTAZ_INFO.contact + ". Or fill the contact form below — I respond within 2-4 hours!";
-  }
-  if (msg.includes('pay') || msg.includes('payment') || msg.includes('invoice') || msg.includes('upfront') || msg.includes('deposit')) {
-    return "Payment structure: " + MURTAZ_INFO.payment;
-  }
-  if (msg.includes('process') || msg.includes('how') || msg.includes('work together') || msg.includes('step')) {
-    return "My process: " + MURTAZ_INFO.process;
-  }
-  if (msg.includes('who') || msg.includes('about') || msg.includes('murtaz') || msg.includes('you') || msg.includes('experience')) {
-    return MURTAZ_INFO.about + " Ask me about pricing, projects, tech stack, or how to work together!";
-  }
-  return "Great question! I'm Murtaz's AI assistant. I can tell you about his pricing, projects, tech stack, delivery timeline, or payment structure. What would you like to know?";
-}
-
-function addMessage(text, isUser) {
-  var messages = document.getElementById('chat-messages');
-  var div = document.createElement('div');
-  div.style.cssText = 'display:flex;gap:8px;align-items:flex-start;' + (isUser ? 'justify-content:flex-end' : '');
-  if (isUser) {
-    div.innerHTML = '<div style="background:linear-gradient(135deg,#7c3aed,#d946ef);border-radius:12px 0 12px 12px;padding:10px 14px;max-width:85%"><p style="font-size:13px;color:#fff;line-height:1.6;margin:0">' + text + '</p></div><div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.1);display:grid;place-items:center;font-size:14px;flex-shrink:0">👤</div>';
-  } else {
-    div.innerHTML = '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#d946ef);display:grid;place-items:center;font-size:14px;flex-shrink:0">🤖</div><div style="background:#120f24;border:1px solid rgba(124,58,237,0.2);border-radius:0 12px 12px 12px;padding:10px 14px;max-width:85%"><p style="font-size:13px;color:#c084fc;line-height:1.7;margin:0">' + text + '</p></div>';
-  }
-  messages.appendChild(div);
-  messages.scrollTop = messages.scrollHeight;
-}
-
-function sendChat() {
-  var input = document.getElementById('chat-input');
-  if (!input) { alert('Chat input not found!'); return; }
-  var msg = input.value.trim();
-  if (!msg) return;
-  input.value = '';
-  addMessage(msg, true);
-  setTimeout(function() {
-    var reply = getSmartReply(msg);
-    addMessage(reply, false);
-  }, 600);
-}
-
-// Quick reply buttons
-function quickReply(text) {
-  var input = document.getElementById('chat-input');
-  if (input) { input.value = text; sendChat(); }
-}
-
 // ── COUNTER ANIMATION ──
 function animateCounter(id, target, suffix, duration) {
   duration = duration || 2000;
@@ -1009,6 +934,69 @@ window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.inn
 window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60));
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script>
+// ── AI CHATBOT - GLOBAL SCOPE ──
+var MURTAZ_INFO = {
+  pricing: "AI Sales Agent: $2K-5K | Full SaaS: $8K-20K | AI Automation: $1.5K-4K | AI Integration: $1K-3K | Retainer: $1.5K-3K/mo | Audit: $299. Min: $1K. Fixed price. 50% upfront.",
+  stack: "Next.js 16, TypeScript, Supabase, Firebase, OpenAI, Anthropic, OpenRouter, Three.js, Vercel, Tailwind, Python, PostgreSQL",
+  projects: "Salevrix AI — Apollo.io alternative, 10 AI agents, 15 automations, built solo in 6 months. Live: salevrix-ai-black.vercel.app. Also: AI Outbound System for US client ($4K, 3 weeks).",
+  speed: "Simple AI integrations: 1-2 weeks. Full SaaS: 4-8 weeks. Most projects: 2-4 weeks. Fixed price always.",
+  contact: "Email: murtaztahir2@gmail.com | LinkedIn: linkedin.com/in/murtaztahir | Responds within 2-4 hours!",
+  payment: "50% upfront, 50% on delivery. For +$10K: 40% start, 30% mid, 30% delivery. Bank transfer or Wise.",
+  process: "1. Free discovery call → 2. Proposal 24-48hrs → 3. Daily Vercel preview updates → 4. Review → 5. Launch + 2 weeks support.",
+  about: "Murtaz Tahir — Full-Stack AI Developer from Pakistan. US & UK clients. Built Salevrix AI solo in 6 months."
+};
+
+function getSmartReply(msg) {
+  msg = msg.toLowerCase();
+  if (msg.match(/price|cost|much|pricing|charge|rate|fee/)) return "💰 Pricing: " + MURTAZ_INFO.pricing;
+  if (msg.match(/fast|long|timeline|week|deliver|time/)) return "⚡ Delivery: " + MURTAZ_INFO.speed;
+  if (msg.match(/stack|tech|tool|language|framework|next|react/)) return "🛠️ Tech Stack: " + MURTAZ_INFO.stack;
+  if (msg.match(/project|work|built|salevrix|example/)) return "🚀 Projects: " + MURTAZ_INFO.projects;
+  if (msg.match(/contact|email|reach|hire|start/)) return "📧 Contact: " + MURTAZ_INFO.contact;
+  if (msg.match(/pay|payment|invoice|upfront|deposit/)) return "💳 Payment: " + MURTAZ_INFO.payment;
+  if (msg.match(/process|how|step|work together/)) return "🔄 Process: " + MURTAZ_INFO.process;
+  if (msg.match(/who|about|murtaz|you|experience/)) return "👤 " + MURTAZ_INFO.about;
+  return "I can answer about: 💰 Pricing | ⚡ Timeline | 🛠️ Tech Stack | 🚀 Projects | 📧 Contact | 💳 Payment. What would you like to know?";
+}
+
+function addChatMessage(text, isUser) {
+  var messages = document.getElementById('chat-messages');
+  if (!messages) return;
+  var div = document.createElement('div');
+  div.style.cssText = 'display:flex;gap:8px;align-items:flex-start;margin-bottom:4px;' + (isUser ? 'justify-content:flex-end' : '');
+  if (isUser) {
+    div.innerHTML = '<div style="background:linear-gradient(135deg,#7c3aed,#d946ef);border-radius:12px 0 12px 12px;padding:10px 14px;max-width:85%"><p style="font-size:13px;color:#fff;line-height:1.6;margin:0">' + text + '</p></div><div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.1);display:grid;place-items:center;font-size:14px;flex-shrink:0">👤</div>';
+  } else {
+    div.innerHTML = '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#d946ef);display:grid;place-items:center;font-size:14px;flex-shrink:0">🤖</div><div style="background:#120f24;border:1px solid rgba(124,58,237,0.2);border-radius:0 12px 12px 12px;padding:10px 14px;max-width:85%"><p style="font-size:13px;color:#c084fc;line-height:1.7;margin:0">' + text + '</p></div>';
+  }
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function sendChat() {
+  var input = document.getElementById('chat-input');
+  if (!input) return;
+  var msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  addChatMessage(msg, true);
+  setTimeout(function() {
+    addChatMessage(getSmartReply(msg), false);
+  }, 500);
+}
+
+function quickReply(text) {
+  var input = document.getElementById('chat-input');
+  if (!input) return;
+  input.value = text;
+  sendChat();
+}
+
+window.sendChat = sendChat;
+window.quickReply = quickReply;
+
 </script>
 </body>
 </html>
