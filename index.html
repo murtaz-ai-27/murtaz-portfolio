@@ -575,7 +575,7 @@ footer{border-top:1px solid var(--line2);padding:24px 60px;display:flex;align-it
       <p style="font-size:13px;color:#4a4270;margin-bottom:20px" class="reveal">Powered by AI — asks me anything about my skills, projects, or pricing</p>
       <div style="margin-top:20px">
         <!-- AI Chatbot Widget -->
-        <div id="chatbot" style="background:#0d0b1a;border:1px solid rgba(124,58,237,0.25);border-radius:20px;overflow:hidden">
+        <div id="chatbot" style="background:#0d0b1a;border:1px solid rgba(124,58,237,0.25);border-radius:20px;overflow:hidden;position:relative;z-index:10;pointer-events:all">
           <div style="background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(217,70,239,0.08));padding:14px 18px;border-bottom:1px solid rgba(124,58,237,0.15);display:flex;align-items:center;gap:10px">
             <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#d946ef);display:grid;place-items:center;font-size:14px">🤖</div>
             <div>
@@ -592,16 +592,16 @@ footer{border-top:1px solid var(--line2);padding:24px 60px;display:flex;align-it
             </div>
           </div>
           <div style="padding:12px;border-top:1px solid rgba(124,58,237,0.12);display:flex;gap:8px">
-            <input id="chat-input" type="text" placeholder="Ask about skills, pricing, projects..." onkeydown="if(event.key==='Enter')sendChat()"
+            <input id="chat-input" type="text" placeholder="Ask about skills, pricing, projects..." onkeydown="if(event.key==='Enter')sendChat()" style="position:relative;z-index:20;pointer-events:all"
               style="flex:1;padding:10px 14px;border-radius:10px;background:#120f24;border:1px solid rgba(124,58,237,0.2);color:#f1eeff;font-size:13px;font-family:Inter,sans-serif;outline:none"
               onfocus="this.style.borderColor='rgba(124,58,237,0.5)'" onblur="this.style.borderColor='rgba(124,58,237,0.2)'"/>
-            <button onclick="sendChat()" style="padding:10px 16px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#d946ef);border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:Syne,sans-serif;white-space:nowrap">Send →</button>
+            <button onclick="sendChat()" style="padding:10px 16px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#d946ef);border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:Syne,sans-serif;white-space:nowrap;position:relative;z-index:20;pointer-events:all">Send →</button>
           </div>
           <div style="padding:8px 14px;border-top:1px solid rgba(124,58,237,0.08);display:flex;gap:6px;flex-wrap:wrap">
-            <button onclick="document.getElementById('chat-input').value=this.textContent;sendChat()" style="padding:4px 10px;border-radius:999px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#c084fc;font-size:11px;cursor:pointer;font-family:Inter,sans-serif">💰 Pricing?</button>
-            <button onclick="document.getElementById('chat-input').value=this.textContent;sendChat()" style="padding:4px 10px;border-radius:999px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#c084fc;font-size:11px;cursor:pointer;font-family:Inter,sans-serif">⚡ How fast?</button>
-            <button onclick="document.getElementById('chat-input').value=this.textContent;sendChat()" style="padding:4px 10px;border-radius:999px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#c084fc;font-size:11px;cursor:pointer;font-family:Inter,sans-serif">🛠️ Tech stack?</button>
-            <button onclick="document.getElementById('chat-input').value=this.textContent;sendChat()" style="padding:4px 10px;border-radius:999px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#c084fc;font-size:11px;cursor:pointer;font-family:Inter,sans-serif">🚀 Past projects?</button>
+            <button onclick="document.getElementById('chat-input').value=this.textContent;sendChat()" style="padding:4px 10px;border-radius:999px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#c084fc;font-size:11px;cursor:pointer;font-family:Inter,sans-serif;position:relative;z-index:20;pointer-events:all">💰 Pricing?</button>
+            <button onclick="document.getElementById('chat-input').value=this.textContent;sendChat()" style="padding:4px 10px;border-radius:999px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#c084fc;font-size:11px;cursor:pointer;font-family:Inter,sans-serif;position:relative;z-index:20;pointer-events:all">⚡ How fast?</button>
+            <button onclick="document.getElementById('chat-input').value=this.textContent;sendChat()" style="padding:4px 10px;border-radius:999px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#c084fc;font-size:11px;cursor:pointer;font-family:Inter,sans-serif;position:relative;z-index:20;pointer-events:all">🛠️ Tech stack?</button>
+            <button onclick="document.getElementById('chat-input').value=this.textContent;sendChat()" style="padding:4px 10px;border-radius:999px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#c084fc;font-size:11px;cursor:pointer;font-family:Inter,sans-serif;position:relative;z-index:20;pointer-events:all">🚀 Past projects?</button>
           </div>
         </div>
       </div>
